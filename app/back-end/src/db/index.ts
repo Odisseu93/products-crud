@@ -1,8 +1,11 @@
-import { sqlite3, Database } from '../libs/sqlite'
+import { config, sqliteDb } from '../libs/sqlite'
 
-const db = new Database({
-  filename: ':memory:',
-  driver: sqlite3.Database,
-})
+export const db = sqliteDb
+const dbConfig = async (config: any) => await config.execute({ debug: true })
 
-export default db
+export const dbInit = () =>
+  new Promise((resolve, reject) => {
+    dbConfig(config)
+      .finally(() => resolve('ok'))
+      .catch(error => reject(error))
+  })

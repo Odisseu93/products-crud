@@ -1,9 +1,13 @@
-import expresss from 'express'
+import { App, parseData } from 'vkrun'
+import { dbInit } from './db'
+import { router } from './routes'
 
-const port = 3000
+const app = App()
 
-const app = expresss()
+app.use(parseData())
+app.use(router)
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`)
+app.server().listen(3000, async () => {
+  await dbInit()
+  console.log('Server is running on port 3000')
 })

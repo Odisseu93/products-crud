@@ -31,10 +31,20 @@ export class ProductRepositorySqlite {
 
   public async get(productId: string) {
     await db.open()
-    const product = await db.get(
-      'SELECT * FROM products WHERE id = ' + productId
-    )
-    await db.open()
+    const stmt = await db.prepare('SELECT * FROM products WHERE id = ?')
+
+    await stmt.bind(productId)
+    const product = await stmt.get()
+    await stmt.finalize()
+    await db.close()
+    
     return product
+  }
+
+  public async getAll() {
+    await db.open()
+    const products = await db.all('SELECT * FROM products')
+    await db.close()
+    return products
   }
 }

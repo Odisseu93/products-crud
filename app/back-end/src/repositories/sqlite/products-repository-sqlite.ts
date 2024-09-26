@@ -25,9 +25,18 @@ export class ProductRepositorySqlite {
     return product
   }
 
-  public async update(product: ProductEntity) {}
+  public async delete(productId: string) {
+    await db.open()
 
-  public async delete(productId: string) {}
+    const stmt = await db.prepare('DELETE FROM products WHERE id == ? RETURNING *')
+    await stmt.bind(productId)
+
+    const deletedProduct = await stmt.get()
+    await stmt.finalize()
+    db.close()
+
+    return deletedProduct
+  }
 
   public async get(productId: string) {
     await db.open()

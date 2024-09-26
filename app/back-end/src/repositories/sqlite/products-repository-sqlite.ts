@@ -5,24 +5,33 @@ export class ProductRepositorySqlite {
   public async create({ id, name, price }: ProductEntity) {
     await db.open()
     const stmt = await db.prepare(
-      'INSERT INTO products (id, name, price) VALUES (?, ?, ?);'
+      'INSERT INTO products (id, name, price) VALUES (?, ?, ?) RETURNING *;'
     )
 
     await stmt.bind(id, name, price)
 
-    await stmt.all()
-
-    console.log('string')
-    const product = await db.get(
-      'SELECT id, name, price FROM products WHERE id = ?',
-      id
-    )
-    console.log({ product })
+    const createProduct = await stmt.get()
 
     await stmt.finalize()
     await db.close()
 
-    return product
+    return createProduct
+  }
+
+  public async update({ id, name, price }: ProductEntity) {
+    await db.open()
+    const stmt = await db.prepare(
+      'UPDATE products SET name = ?, price = ? WHERE id = ? RETURNING *;'
+    )
+
+    await stmt.bind(name, price, id)
+
+    const updatedProduct = await stmt.get()
+
+    await stmt.finalize()
+    await db.close()
+
+    return updatedProduct
   }
 
   public async delete(productId: string) {

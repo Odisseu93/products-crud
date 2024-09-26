@@ -4,7 +4,6 @@ import path from 'path'
 import { db } from '../db'
 
 export const queries = [
-  'DROP TABLE IF EXISTS products',
   'CREATE TABLE IF NOT EXISTS "products" ( id TEXT NOT NULL, name TEXT NOT NULL, price REAL NOT NULL, PRIMARY KEY(id))',
 ]
 

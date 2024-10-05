@@ -1,0 +1,14 @@
+{
+    "name": "product-crud",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "node -e 'require(\"./main.js\").dev()'",
+        "test": "node -e 'require(\"./main.js\").test()'",
+        "build": "node -e 'require(\"./main.js\").build()'"
+    },
+    "author": "Ulisses Silvério @Odisseu93",
+    "license": "ISC",
+    "devDependencies": {}
+}

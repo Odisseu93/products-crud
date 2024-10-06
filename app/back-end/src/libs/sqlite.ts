@@ -11,7 +11,6 @@ const sqlFile = path.join(__dirname, '../db/database.sql')
 
 const sqliteDb = new Database({
   filename: sqlFile,
-  // filename: ':memory:',
   driver: sqlite3.Database,
 })
 
@@ -23,6 +22,11 @@ const config = {
   },
 }
 
+const sqliteInMemoryDb = new Database({
+  filename: ':memory:',
+  driver: sqlite3.Database,
+})
+
 //https://www.npmjs.com/package/sqlite
 
-export { sqliteDb, config }
+export { sqliteDb, sqliteInMemoryDb, config }

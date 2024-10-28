@@ -15,7 +15,7 @@
     "cors": "^2.8.5",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",
-    "vkrun": "^0.42.0"
+    "vkrun": "^1.1.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.13",

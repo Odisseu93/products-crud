@@ -3568,10 +3568,10 @@ vary@^1:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
-vkrun@^0.42.0:
-  version "0.42.0"
-  resolved "https://registry.yarnpkg.com/vkrun/-/vkrun-0.42.0.tgz#754d2741676e6e89f395553181a7332b252e1d59"
-  integrity sha512-g++lGej4fpbxBhGCQw5u6b3KnI+NGVSAH/Nv9UnINxWHRJs60Gs1b9EpMtaAo9+fC9oVB0FR6Lz/44QqHwTpXg==
+vkrun@^1.1.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/vkrun/-/vkrun-1.4.0.tgz#ed4679387e47047e5f8deb59144a44ce6371ae52"
+  integrity sha512-DNKaSlRKAkTd8IPsDVYICDy+B5H7IHKzdUWXgtZrQuYVrYlmsmuWU/96FE03mOnLzkX7qnipIq9sOLpBOcdlKA==
 
 walker@^1.0.8:
   version "1.0.8"

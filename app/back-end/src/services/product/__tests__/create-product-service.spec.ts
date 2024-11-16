@@ -1,14 +1,21 @@
-import { InputCreateProductService } from 'back-end/src/interfaces/services/product/create-product-interface'
-import {
-  closeConnection,
-  openConnection,
-  ProductRepositorySqlite,
-} from '../../../repositories/sqlite/__mock__/products-repository-sqlite'
+import { db } from '../../../db/__mock__'
+import { InputCreateProductService } from '../../../interfaces/services/product/create-product-interface'
+import { ProductRepositorySqlite } from '../../../repositories/sqlite/__mock__/products-repository-sqlite'
 import { CreateProductService } from '../create-product-service'
 
 describe('CreateProductService', () => {
+  beforeAll(async () => {
+    await db.open()
+    await db.exec(
+      'CREATE TABLE IF NOT EXISTS "products" ( id TEXT NOT NULL, name TEXT NOT NULL, price REAL NOT NULL, PRIMARY KEY(id))'
+    )
+  })
+
+  afterEach(async () => {
+    await db.close()
+  })
+
   it('Should create a new product', async () => {
-    await openConnection()
     const repository = new ProductRepositorySqlite()
     const service = new CreateProductService(repository)
 
@@ -17,7 +24,8 @@ describe('CreateProductService', () => {
       price: 10.99,
     }
     const sut = await service.execute(product)
-    await closeConnection()
+
+    // await db.close()
 
     expect(sut.content).toHaveProperty('id')
     expect(sut.content).toHaveProperty('name', 'Test Product')

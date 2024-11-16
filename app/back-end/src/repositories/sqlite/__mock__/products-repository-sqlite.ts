@@ -1,17 +1,8 @@
+import { db } from '../../../db/__mock__'
 import { ProductEntity } from '../../../entities/product-entity'
-import { db, dbInit } from '../../../db/__mock__'
-
-const createProductTable = async () =>
-  await db.exec(
-    'CREATE TABLE IF NOT EXISTS "products" ( id TEXT NOT NULL, name TEXT NOT NULL, price REAL NOT NULL, PRIMARY KEY(id))'
-  )
-
-export const openConnection = async () => await db.open()
-export const closeConnection = async () => await db.close()
 
 export class ProductRepositorySqlite {
   public async create({ id, name, price }: ProductEntity) {
-    await createProductTable()
     const stmt = await db.prepare(
       'INSERT INTO products (id, name, price) VALUES (?, ?, ?) RETURNING *;'
     )

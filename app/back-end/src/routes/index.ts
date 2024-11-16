@@ -1,9 +1,10 @@
 import {
   createProductSchema,
-  ProductIdSchema,
+  productIdSchema,
   updateProductSchema,
 } from '../utils/schemas'
-import { Router, validateRouteData } from 'vkrun'
+import { Router } from 'vkrun'
+import { validateRouteData } from '../middlewares/validateRouteData'
 import { createProductControllerFactory } from '../factories/product/create-product-controller-factory'
 import { deleteProductControllerFactory } from '../factories/product/delete-product-controller-factory'
 import { getAllProductsControllerFactory } from '../factories/product/get-all-products-controller-factory'
@@ -20,7 +21,7 @@ router.post(
 
 router.delete(
   '/product/delete/:id',
-  validateRouteData(ProductIdSchema),
+  validateRouteData(productIdSchema),
   deleteProductControllerFactory()
 )
 
@@ -34,7 +35,7 @@ router.put(
 
 router.get(
   '/product/get/:id',
-  validateRouteData(ProductIdSchema),
+  validateRouteData(productIdSchema),
   getProductControllerFactory()
 )
 

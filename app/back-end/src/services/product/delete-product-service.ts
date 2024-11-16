@@ -27,7 +27,7 @@ export class DeleteProductService implements DeleteProductServiceInterface {
         }
       }
       return {
-        statusCode: 201,
+        statusCode: 200,
         content: deletedProduct,
       }
     } catch (error: any) {

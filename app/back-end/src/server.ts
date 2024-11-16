@@ -1,11 +1,5 @@
-import { App, parseData } from 'vkrun'
+import { app } from './app'
 import { dbInit } from './db'
-import { router } from './routes'
-
-const app = App()
-
-app.use(parseData())
-app.use(router)
 
 app.server().listen(3000, async () => {
   await dbInit()

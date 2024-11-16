@@ -1,5 +1,4 @@
 import { schema as vs } from 'vkrun'
-import { VkrunCors } from 'vkrun/lib/modules/cors'
 
 export const createProductSchema = vs().object({
   body: vs().object({
@@ -18,7 +17,7 @@ export const updateProductSchema = vs().object({
   }),
 })
 
-export const ProductIdSchema = vs().object({
+export const productIdSchema = vs().object({
   params: vs().object({
     id: vs().string(),
   }),

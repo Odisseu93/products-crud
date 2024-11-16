@@ -15,7 +15,7 @@ export class GetAllProductsService implements GetAllProductsServiceInterface {
     try {
       const products = await this.productRepository.getAll()
       return {
-        statusCode: 201,
+        statusCode: 200,
         content: products,
       }
     } catch (error: any) {

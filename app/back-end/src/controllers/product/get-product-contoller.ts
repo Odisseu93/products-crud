@@ -1,7 +1,7 @@
 import { GetProductServiceInterface } from '../../interfaces/services/product/get-product-interface'
 import { Controller, Response, Request } from 'vkrun'
 
-
+type GetProductParameters = { id: string }
 export class GetProductController implements Controller {
   private getProductService: GetProductServiceInterface
   constructor(getProductService: GetProductServiceInterface) {
@@ -9,9 +9,9 @@ export class GetProductController implements Controller {
   }
 
   public async handle(req: Request, res: Response) {
-    const id = req.params?.id as string
+    const params = req.params as GetProductParameters
 
-    const output = await this.getProductService.execute({id})
+    const output = await this.getProductService.execute({ id: params?.id })
 
     res.status(output.statusCode).json(output.content)
   }

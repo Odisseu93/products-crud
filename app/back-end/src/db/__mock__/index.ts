@@ -1,12 +1,7 @@
+import sqlite3 from 'sqlite3'
+import { Database } from 'sqlite'
 
-import { sqliteInMemoryDb, config } from '../../libs/sqlite'
-
-export const db = sqliteInMemoryDb
-const dbConfig = async (config: any) => await config.execute({ debug: true })
-
-export const dbInit = () =>
-  new Promise((resolve, reject) => {
-    dbConfig(config)
-      .finally(() => resolve('ok'))
-      .catch(error => reject(error))
-  })
+export const db = new Database({
+  filename: ':memory:',
+  driver: sqlite3.Database,
+})

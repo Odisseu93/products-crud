@@ -1,10 +1,10 @@
 import { GetProductController } from '../../controllers/product/get-product-contoller'
-import { ProductRepositorySqlite } from '../../repositories/sqlite/products-repository-sqlite'
+import { ProductRepositoryPrisma } from '../../repositories/prisma/product-repository-prisma'
 import { GetProductService } from '../../services/product/get-product-service'
 import { controllerAdapter } from 'vkrun'
 
 export const getProductControllerFactory = () => {
-  const repository = new ProductRepositorySqlite()
+  const repository = new ProductRepositoryPrisma()
   const service = new GetProductService(repository)
 
   const controller = new GetProductController(service)

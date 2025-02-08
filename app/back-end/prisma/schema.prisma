@@ -1,14 +1,38 @@
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
 }
 
-model products {
-  id    String @id
-  name  String
-  price Float
+model Products {
+    id                String              @id
+    name              String
+    price             Float
+    ProductWarehouse ProductWarehouse[] 
+    
+    @@map("products")
+}
+
+model Warehouse {
+    id                String              @id
+    name              String
+    location          String
+    ProductWarehouse ProductWarehouse[] 
+
+    @@map("warehouse")
+}
+
+model ProductWarehouse {
+    productId   String
+    warehouseId String
+    quantity    Int
+    @@id([productId, warehouseId])
+
+    product   Products   @relation(fields: [productId], references: [id], onDelete: Cascade)
+    warehouse Warehouse @relation(fields: [warehouseId], references: [id], onDelete: Cascade)
+
+    @@map("product_warehouse")
 }

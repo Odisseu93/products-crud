@@ -2,13 +2,16 @@ import v from 'vkrun'
 import { app } from '../../__mock__/app'
 import { db } from '../../db/__mock__'
 import { validateRouteData } from '../../middlewares/validateRouteData'
-import { createProductSchema, updateProductSchema } from '../../utils/schemas'
-import { productIdSchema } from '../../utils/schemas'
-import { createProductControllerFactory } from '../../factories/__mock__/create-product-controller-factory'
-import { getProductControllerFactory } from '../../factories/__mock__/get-product-controller-factory'
-import { updateProductControllerFactory } from '../../factories/__mock__/update-product-controller-factory'
-import { deleteProductControllerFactory } from '../../factories/__mock__/delete-product-controller-factory'
-import { getAllProductsControllerFactory } from '../../factories/__mock__/get-all-products-controller-factory'
+import {
+  createProductSchema,
+  updateProductSchema,
+} from '../../utils/schemas/controllers/product-controller-schemas'
+import { productIdSchema } from '../../utils/schemas/controllers/product-controller-schemas'
+import { createProductControllerFactory } from '../../factories/__mock__/products/create-product-controller-factory'
+import { getProductControllerFactory } from '../../factories/__mock__/products/get-product-controller-factory'
+import { updateProductControllerFactory } from '../../factories/__mock__/products/update-product-controller-factory'
+import { deleteProductControllerFactory } from '../../factories/__mock__/products/delete-product-controller-factory'
+import { getAllProductsControllerFactory } from '../../factories/__mock__/products/get-all-products-controller-factory'
 
 const router = v.Router()
 

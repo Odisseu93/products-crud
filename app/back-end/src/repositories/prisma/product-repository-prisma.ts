@@ -1,6 +1,6 @@
 import prisma from '../../libs/prisma'
 import { ProductEntity } from '../../entities/product-entity'
-import { ProductRepositoryInterface } from 'back-end/src/interfaces/repositories/product/product-repository-interface'
+import { ProductRepositoryInterface } from '../../interfaces/repositories/product/product-repository-interface'
 
 export class ProductRepositoryPrisma implements ProductRepositoryInterface {
   public async create({ id, name, price }: ProductEntity) {

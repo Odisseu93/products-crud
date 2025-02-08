@@ -1,6 +1,6 @@
-import { UpdateProductController } from '../../controllers/product/update-product-contoller'
-import { ProductRepositorySqlite } from '../../repositories/sqlite/__mock__/products-repository-sqlite'
-import { UpdateProductService } from '../../services/product/update-product-service'
+import { UpdateProductController } from '../../../controllers/product/update-product-contoller'
+import { ProductRepositorySqlite } from '../../../repositories/sqlite/__mock__/products-repository-sqlite'
+import { UpdateProductService } from '../../../services/product/update-product-service'
 import { controllerAdapter } from 'vkrun'
 
 export const updateProductControllerFactory = () => {

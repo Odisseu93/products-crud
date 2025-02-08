@@ -1,9 +1,11 @@
 import { App, parseData } from 'vkrun'
-import { router } from './routes'
+import productsRouter from './routes/products'
+import warehouseRouter from './routes/warehouse'
 
 const app = App()
 
 app.use(parseData())
-app.use(router)
+app.use(productsRouter)
+app.use(warehouseRouter)
 
 export { app }

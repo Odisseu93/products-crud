@@ -26,10 +26,10 @@ model Warehouse {
 }
 
 model ProductWarehouse {
-    id          String @id
     productId   String
     warehouseId String
     quantity    Int
+    @@id([productId, warehouseId])
 
     product   Products   @relation(fields: [productId], references: [id], onDelete: Cascade)
     warehouse Warehouse @relation(fields: [warehouseId], references: [id], onDelete: Cascade)

@@ -23,7 +23,7 @@ const config: Config = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   testMatch: ['**/**/*.test.ts', '**/**/*.spec.ts'],
+  setupFilesAfterEnv: ['<rootDir>/src/libs/prisma/index.ts'],
 }
 
 export default config
-
